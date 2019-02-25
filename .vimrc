@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mhinz/vim-startify'
@@ -45,13 +45,22 @@ set mousehide  " Hide mouse after chars typed
 set backspace=2 " Make backspace works like most other programs
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
 highlight EW ctermbg=darkgreen guibg=lightgreen
-match EW /  \+$/ " Shows, in green, spaces errorsi
+match EW /  \+$/ " Shows, in green, spaces errors
 
 " Visual
 set novisualbell " No blinking
 set noerrorbells " No noise
 set laststatus=2  " Always show status line
 set showcmd " Display an incomplete command in the lower right corner of the Vim window
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " NERDTree
 "autocmd vimenter * NERDTree " Open NERDTree with vim
